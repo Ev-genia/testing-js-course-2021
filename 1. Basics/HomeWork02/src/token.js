@@ -1,6 +1,4 @@
-// @ts-check
-
-class StringToken {
+export default class StringToken {
     /**
      * @param {string} str
      */
@@ -33,5 +31,3 @@ class StringToken {
         
     }
 }
-
-export default StringToken;
