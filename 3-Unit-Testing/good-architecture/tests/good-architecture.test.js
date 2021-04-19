@@ -1,53 +1,59 @@
+import LocalStorageDataService from "../src/local-storage-data-service";
 import IssuesDataStorage from "../src/issues-data-storage";
-// import LocalStorageDataService from "../src/local-storage-data-service";
+import IssuesTemplating from "../src/issues-templating";
 
 describe('Issues tests with good architecture', () => {
-   
     test('Create issues sucsessfully', () => {
-        
         // Arrange
-        // expect.assertions(1);
-
-        const issues = ['Test issue 1', 'Test issue 2', 'Test issue 3'];
-        const expectedIssueus = issues.map((issue) => {
-            return new IssuesDataStorage(issue);
-        })
-        const dataService = {
-            addEntiti() {
+        // expect.hasassertions();
+        const ID_1 = '0ae8cc16-be04-5741-a1be-d6745d73665f';
+        const ID_2 = '92698cbe-4eb0-5727-9959-d587d3042e94';
+        const fakeData = [
+            {
+                id: ID_1,
+                description: "jbj",
+                severity: "Low",
+                assignedTo: "jbk",
+                status: 'Open'
+            },
+            {
+                id: ID_2,
+                description: "fdbcxfbxf",
+                severity: "High",
+                assignedTo: "1234",
+                status: "Open"
             }
-        };
-        dataService.createIssue = jest.fn().mockResolvedValue(expectedIssueus);
-        const issuesDataStorage = new IssuesDataStorage(dataService);
+        ];
+        // JSON.parse = jest.fn(fakeData);
+        localStorage.getItem = jest.fn().mockReturnValue(fakeData);
+        // console.log();
+
+        
+        
+
+        const newLocalStDataServ = new LocalStorageDataService('test 1');
+        const newIssDataStor = new IssuesDataStorage(newLocalStDataServ);
+        const newIssTemp = new IssuesTemplating(newIssDataStor);
+        JSON.parse = jest.fn().mockReturnValue(newIssTemp);
+        
 
         // Act
-        issuesDataStorage.createIssue();
-        // const dataService = new LocalStorageDataService('issues');
-        // const issuesStorage = new IssuesDataStorage(dataService);
+        const result = newIssDataStor.createIssue(fakeData);
+        console.log(result);
 
         // Assert
-        expect(issuesDataStorage._issues).toEqual(expectedIssueus);
+        expect(result).toEqual();
+
+        
     });
 
     test('Delete issue sucsessfully', () => {
         // Arrange
-        const issues = [
-            {
-                id: 1,
-                issue: 'Test issue 1'
-            },
-            {
-                id: 2,
-                issue: 'Test issue 2'
-            },
-            { 
-                id: 3,
-                issue: 'Test issue 3'
-            }
-        ];
+        
 
         // Act
 
         // Assert
 
-    })
+    });
 })
