@@ -36,9 +36,9 @@ describe('Issues tests with good architecture', () => {
         const newIssTemp = new IssuesTemplating(newIssDataStor);
         JSON.parse = jest.fn().mockReturnValue(newIssTemp);
         
-
+        const objFakeData = fakeData[0];
         // Act
-        const result = newIssDataStor.createIssue(fakeData);
+        const result = newIssDataStor.createIssue(objFakeData);
         console.log(result);
 
         // Assert
