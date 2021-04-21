@@ -1,5 +1,5 @@
 // import { TestScheduler } from '@jest/core';
-import { deleteIssue } from '../src/main';
+import { deleteIssue, setStatusClosed } from '../src/main';
 
 describe('function deleteIssue', () => {
     test('Delete is correctly', () => {
@@ -60,9 +60,47 @@ describe('function deleteIssue', () => {
 describe('setStatusClosed function', () => {
     test('Close status is correctly', () => {
         // Arrange
+        expect.hasAssertions();
+        const ID_1 = '0ae8cc16-be04-5741-a1be-d6745d73665f';
+        const ID_2 = '92698cbe-4eb0-5727-9959-d587d3042e94';
+        const fakeDataFirstCall = [
+            {
+                id: ID_1,
+                description: "jbj",
+                severity: "Low",
+                assignedTo: "jbk",
+                status: "Open"
+            },
+            {
+                id: ID_2,
+                description: "fdbcxfbxf",
+                severity: "High",
+                assignedTo: "1234",
+                status: "Open"
+            }
+        ];
+        const fakeDataSecondCall = [
+            {
+                id: ID_1,
+                description: "jbj",
+                severity: "Low",
+                assignedTo: "jbk",
+                status: "Open"
+            },
+            {
+                id: ID_2,
+                description: "fdbcxfbxf",
+                severity: "High",
+                assignedTo: "1234",
+                status: "Closed"
+            }
+        ];
+        JSON.parse = jest.fn().mockReturnValueOnce(fakeDataFirstCall).mockReturnValueOnce(fakeDataSecondCall);
 
         // Act
+        setStatusClosed(ID_2);
 
-        // Asseart
-    });
+        // Assert
+        expect(fakeDataFirstCall).toEqual(fakeDataSecondCall);
+    })
 });
