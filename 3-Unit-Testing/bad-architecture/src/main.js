@@ -1,7 +1,7 @@
 /* global chance */
 document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
 
-function saveIssue(e) {
+export function saveIssue(e) {
   var issueDesc = document.getElementById('issueDescInput').value;
   var issueSeverity = document.getElementById('issueSeverityInput').value;
   var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
@@ -34,7 +34,7 @@ function saveIssue(e) {
 }
 
 // eslint-disable-next-line no-unused-vars
-function setStatusClosed(id) {
+export function setStatusClosed(id) {
   var issues = JSON.parse(localStorage.getItem('issues'));
 
   for (var i = 0; i < issues.length; i++) {
@@ -49,7 +49,7 @@ function setStatusClosed(id) {
 }
 
 // eslint-disable-next-line no-unused-vars
-function deleteIssue(id) {
+export function deleteIssue(id) {
   var issues = JSON.parse(localStorage.getItem('issues'));
 
   for (var i = 0; i < issues.length; i++) {
@@ -63,7 +63,7 @@ function deleteIssue(id) {
   fetchIssues();
 }
 
-function fetchIssues() {
+export function fetchIssues() {
   var issues = JSON.parse(localStorage.getItem('issues'));
   var issuesList = document.getElementById('issuesList');
 

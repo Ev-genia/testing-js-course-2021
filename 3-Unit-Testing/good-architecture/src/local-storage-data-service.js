@@ -10,6 +10,7 @@ const LocalStorageDataService = class {
 
   addEntity(entity) {
     const entities = this.loadEntities();
+    // console.log(entities);
     entities.push(entity);
     return this.saveEntities(entities);
   }
