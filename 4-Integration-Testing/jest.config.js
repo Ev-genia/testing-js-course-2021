@@ -4,9 +4,6 @@
  */
 
 module.exports = {
-  clearMocks: true,
-  // coverageProvider: "v8",
-  // testEnvironment: "node",
-  setupFilesAfterEnv: ["./tests/setupTests.js"],
-  // setupFiles: ["./tests/setupTests.js"]
+  coverageProvider: "v8",
+  testEnvironment: "node",
 };
