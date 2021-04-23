@@ -1,5 +1,6 @@
 // import LocalStorageDataService from "../src/local-storage-data-service";
-import RestApiStorageDataService from './rest-api-storage-data-service';
+// import RestApiStorageDataService from '../src/rest-api-storage-data-service';
+import DataService from "../src/data-service";
 import IssuesDataStorage from "../src/issues-data-storage";
 // import IssuesTemplating from "../src/issues-templating";
 
@@ -8,7 +9,8 @@ describe('Issues tests with good architecture', () => {
         // Arrange
         // expect.hasAssertions();
         
-        const newLocalStDataServ = new RestApiStorageDataService('http://localhost:3000/list');
+        // const newLocalStDataServ = new RestApiStorageDataService('http://localhost:3000/list');
+        const newLocalStDataServ = new DataService('http://localhost:3000', 'list');
         const newIssDataStor = new IssuesDataStorage(newLocalStDataServ);
         // const objFakeData = fakeData[0];
 
@@ -18,7 +20,7 @@ describe('Issues tests with good architecture', () => {
         // Assert
         expect(result).toBeTruthy();
     });
-
+/** 
     test('Create issues without ID', () => {
         // Arrange
         expect.hasAssertions();
@@ -88,4 +90,5 @@ describe('Issues tests with good architecture', () => {
         // Assert
         expect(result).toBe(true);
     });
+*/
 })

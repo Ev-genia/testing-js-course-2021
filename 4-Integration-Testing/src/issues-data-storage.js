@@ -41,7 +41,7 @@ const IssuesDataStorage = class {
       return this.dataService.addEntity(issue);
     }
 
-    throw new Error('Issue must ba an object');
+    throw new Error('Issue must be an object');
   }
 
   /**
